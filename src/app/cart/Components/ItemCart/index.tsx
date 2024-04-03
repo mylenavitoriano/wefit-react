@@ -5,13 +5,6 @@ import { Text, CloseButton, Input } from "@mantine/core";
 import { FaTrash } from "react-icons/fa";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
-interface MovieProps {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-}
-
 const ItemCart = () => {
   return (
     <ItemCartComponent>

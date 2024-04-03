@@ -6,6 +6,7 @@ import { GlobalStyles } from "../styles/global";
 import "@mantine/core/styles.css";
 import Header from "@/components/Header";
 import StyledComponentsRegistry from "@/libs/styled-components/registry";
+import CartProvider from "@/providers/cart";
 
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
@@ -25,10 +26,12 @@ export default function RootLayout({
         <MantineProvider>
           <StyledComponentsRegistry>
             <GlobalStyles />
-            <div className="page">
-              <Header />
-              <main>{children}</main>
-            </div>
+            <CartProvider>
+              <div className="page">
+                <Header />
+                <main>{children}</main>
+              </div>
+            </CartProvider>
           </StyledComponentsRegistry>
         </MantineProvider>
       </body>

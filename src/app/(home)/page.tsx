@@ -8,21 +8,15 @@ import { IoIosSearch } from "react-icons/io";
 import Loader from "@/components/Loader";
 import ReloadPage from "@/components/RealodPage";
 import CardMovie from '@/components/CardMovie';
+import { GlobalMovieProps } from '@/@types/movie-type';
 
 const URL_API = 'http://localhost:3001/products'
-
-interface Movie {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-}
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchMovie, setSearchMovie] = useState('');
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<GlobalMovieProps[]>([]);
 
   const fetchAllData = async () => {
     try{
@@ -84,7 +78,7 @@ export default function Home() {
 
         <ListMovies>
           {movies && movies.map((item) => (
-            <CardMovie key={item.id} movie={item}/>
+            <CardMovie movie={item} key={item.id}/>
           ))}
         </ListMovies>
         

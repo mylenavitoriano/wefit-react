@@ -1,16 +1,14 @@
 "use client";
+import { GlobalMovieProps } from "@/@types/movie-type";
 import { Button, Card, ImageMovie } from "./styles";
 import { Text } from "@mantine/core";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
-interface MovieProps {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
+interface MovieProps{
+  movie: GlobalMovieProps
 }
 
-const CardMovie = ({ movie }: {movie: MovieProps} ) => {
+const CardMovie = ({movie}: MovieProps) => {
   return (
     <Card>
       <ImageMovie 
