@@ -9,31 +9,20 @@ import CardMovie from '@/components/CardMovie';
 import { GlobalMovieProps } from '@/@types/movie-type';
 import InputSearch from './Components/InputSearch';
 
+const URL_API = 'http://localhost:3001/products'
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchMovie, setSearchMovie] = useState('');
   const [movies, setMovies] = useState<GlobalMovieProps[]>([]);
-  const [API, setAPI] = useState('');
 
   const fetchAllData = async () => {
     try{
-      let URI_API = '';
       setLoading(true);
       setError(false);
 
-      if (typeof window !== 'undefined') {
-        const hostname = window.location.hostname;
-        if(hostname != "localhost"){
-          URI_API = 'http://'+hostname+':3001/products';
-        }else{
-          URI_API = 'https://'+hostname+':3001/products';
-        }
-        
-        setAPI(URI_API);
-      }
-
-      const response = await fetch(URI_API, {method: 'GET'});
+      const response = await fetch(URL_API, {method: 'GET'});
       const data = await response.json();
 
       if(!data){
@@ -49,8 +38,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    
-
     fetchAllData();
   }, []);
 
@@ -63,7 +50,6 @@ export default function Home() {
 
       {(!loading && !error && movies) && 
       <Movies>
-      
         <InputSearch searchMovie={searchMovie} setSearchMovie={setSearchMovie} />
 
         <ListMovies>
