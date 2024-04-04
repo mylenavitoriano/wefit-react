@@ -1,14 +1,14 @@
 "use client"
 import { Input, CloseButton } from '@mantine/core';
+import Link from 'next/link';
 import { IoIosSearch } from "react-icons/io";
 
 interface InputSearchProps {
     searchMovie: string;
     setSearchMovie: React.Dispatch<React.SetStateAction<string>>;
-    handleSearchClick: () => void;
 }
 
-const InputSearch = ({ searchMovie, setSearchMovie, handleSearchClick }: InputSearchProps) => {
+const InputSearch = ({ searchMovie, setSearchMovie }: InputSearchProps) => {
 
   return (
     <Input
@@ -18,12 +18,13 @@ const InputSearch = ({ searchMovie, setSearchMovie, handleSearchClick }: InputSe
         rightSectionPointerEvents="all"
         mt="md"
         rightSection={
-        <CloseButton
-            icon={<IoIosSearch size={18} />}
-            aria-label="Buscar filme"
-            onClick={handleSearchClick}
-            style={{ display: searchMovie ? undefined : 'none' }}
-        />
+        <Link href={'./'+searchMovie}>
+            <CloseButton
+                icon={<IoIosSearch size={18} />}
+                aria-label="Buscar filme"
+                style={{ display: searchMovie ? undefined : 'none' }}
+            />
+        </Link>
         }
     />
   );

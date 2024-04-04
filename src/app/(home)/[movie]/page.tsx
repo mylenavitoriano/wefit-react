@@ -7,15 +7,35 @@ import Loader from "@/components/Loader";
 import ReloadPage from "@/components/RealodPage";
 import CardMovie from '@/components/CardMovie';
 import { GlobalMovieProps } from '@/@types/movie-type';
-import InputSearch from './Components/InputSearch';
+import InputSearch from '../Components/InputSearch';
+import { useRouter } from 'next/navigation';
 
-const URL_API = 'http://localhost:3001/products'
+const URL_API = 'http://localhost:3001/products';
 
-export default function Home() {
+interface MovieSearchPageProps {
+    params: {
+      movie: string;
+    };
+  }
+
+const MovieSearch = ({ params: { movie }}: MovieSearchPageProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [searchMovie, setSearchMovie] = useState('');
+
+  const [searchMovie, setSearchMovie] = useState(decodeURI(movie));
   const [movies, setMovies] = useState<GlobalMovieProps[]>([]);
+
+  const router = useRouter();
+
+  const removeAccents = (text: string) => {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+  }
+  
+  const filterByName = (movie: GlobalMovieProps, term: string): boolean => {
+    const titleWithoutAccents = removeAccents(movie.title.toLowerCase());
+    const termWithoutAccents = removeAccents(term.toLowerCase());
+    return titleWithoutAccents.includes(termWithoutAccents);
+  }
 
   const fetchAllData = async () => {
     try{
@@ -28,7 +48,8 @@ export default function Home() {
       if(!data){
         throw "Erro";
       }else{
-        setMovies(data);
+        const filteredMovies = data.filter((movieItem: GlobalMovieProps) => filterByName(movieItem, searchMovie));
+        setMovies(filteredMovies);
       }
     } catch (error){
       setError(true);
@@ -41,12 +62,18 @@ export default function Home() {
     fetchAllData();
   }, []);
 
+  useEffect(() => {
+    if(searchMovie == ""){
+      router.push('/');
+    }
+  }, [searchMovie]);
+
 
   return (
     <Container>
       {loading && <Loader />}
 
-      {(error && movies.length <= 0) && <ReloadPage reload={true}/>}
+      {(error && movies.length <= 0) && <ReloadPage reload={false}/>}
 
       {(!loading && !error && movies) && 
       <Movies>
@@ -63,3 +90,5 @@ export default function Home() {
     </Container>
   );
 }
+
+export default MovieSearch;

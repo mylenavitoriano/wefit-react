@@ -26,8 +26,6 @@ export default function Cart() {
     setPurchaseCompleted(true);
   }
 
-  console.log(purchaseCompleted);
-
   return (
     <>
       {movies.length > 0 && purchaseCompleted == false ? ( 
@@ -51,7 +49,7 @@ export default function Cart() {
         ) : purchaseCompleted == true ? (
           <PurchaseCompleted />
         ) : (
-          <ReloadPage />
+          <ReloadPage reload={false}/>
         )}
     </>
   );
