@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import styled from "styled-components";
-import { Button as ButtonMantine } from "@mantine/core";
-import {Input as InputMantine} from '@mantine/core'
 
 export const ItemCartComponent = styled.div`
   width: 100%;

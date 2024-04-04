@@ -3,8 +3,7 @@ import { CartContext, CartMovie } from "@/providers/cart";
 import { DetailsShopping, Group, GroupButtonsAmount, GroupPrice, GroupProduct, GroupSubtotal, ImageMovie, ItemCartComponent } from "./styles";
 import { Text, CloseButton, Input, Button } from "@mantine/core";
 
-import { FaTrash } from "react-icons/fa";
-import { FaPlus, FaMinus } from "react-icons/fa6";
+import { FaTrash, FaPlus, FaMinus } from "react-icons/fa6";
 import { useContext } from "react";
 
 interface CartItemprops {
