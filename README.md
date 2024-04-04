@@ -33,15 +33,15 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-No Projeto e-Commerce, é proporcionado ao usuário uma listagem de produtos (fictícios) e possibilita que ele adicione-os ao carrinho, aumente a quantidade do mesmo e após feito todos esses processos, é possível ver o valor final de sua compra.
-Para esse projeto eu consumi uma API fictícia de produtos, com ela eu obtive retorno de dados como o nome, a descrição, imagem e preço. Após o consumo dessa API foi feita a listagem para o usuário, como um e-Commerce.
+No Projeto e-Commerce, é proporcionado ao usuário uma listagem de produtos e possibilita que ele adicione-os ao carrinho, aumente a quantidade do mesmo e após feito todos esses processos, é possível ver o valor final de sua compra.
+Para esse projeto eu consumi uma API de Filmes, com ela eu obtive retorno de dados como título do filme, imagem e preço. Após o consumo dessa API foi feita a listagem para o usuário, como um e-Commerce.
 
 - [Acesse o projeto finalizado, online](https://front-end-challenge-indol.vercel.app/)
 
 
 ## 🔖 Layout
 
-Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/M2hza6i4eVTeH4gqgRTP3i/MKS-Front-end-challenge?node-id=0%3A1&t=v7COeHbida0XTG4Y-0). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/RY494yKewR5EpAWUWBhlUp/Re-teste-Front-React-WeFit---2024?type=design&node-id=0%3A1&mode=design&t=NkSGvyMeyZjCXYlF-1).
 
 ## :memo: Licença
 
