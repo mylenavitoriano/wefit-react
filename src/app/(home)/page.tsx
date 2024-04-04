@@ -26,7 +26,12 @@ export default function Home() {
 
       if (typeof window !== 'undefined') {
         const hostname = window.location.hostname;
-        URI_API = 'http://'+hostname+':3001/products';
+        if(hostname != "localhost"){
+          URI_API = 'http://'+hostname+':3001/products';
+        }else{
+          URI_API = 'https://'+hostname+':3001/products';
+        }
+        
         setAPI(URI_API);
       }
 
