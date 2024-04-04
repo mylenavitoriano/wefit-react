@@ -25,7 +25,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Styled-component
 - JSON Server
 - Mantine
-- React Router
 
 ## 💻 Projeto
 
