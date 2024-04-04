@@ -9,8 +9,6 @@ import CardMovie from '@/components/CardMovie';
 import { GlobalMovieProps } from '@/@types/movie-type';
 import InputSearch from './Components/InputSearch';
 
-
-
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
