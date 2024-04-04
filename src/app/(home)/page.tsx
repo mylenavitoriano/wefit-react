@@ -16,6 +16,7 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [searchMovie, setSearchMovie] = useState('');
   const [movies, setMovies] = useState<GlobalMovieProps[]>([]);
+  const [API, setAPI] = useState('');
 
   const fetchAllData = async () => {
     try{
@@ -26,6 +27,7 @@ export default function Home() {
       if (typeof window !== 'undefined') {
         const hostname = window.location.hostname;
         URI_API = 'http://'+hostname+':3001/products';
+        setAPI(URI_API);
       }
 
       const response = await fetch(URI_API, {method: 'GET'});
@@ -58,6 +60,7 @@ export default function Home() {
 
       {(!loading && !error && movies) && 
       <Movies>
+      <p>{API}</p>
         <InputSearch searchMovie={searchMovie} setSearchMovie={setSearchMovie} />
 
         <ListMovies>
