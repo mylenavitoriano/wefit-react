@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { Container, ListMovies, Movies } from "./styles";
-import { Input, CloseButton } from '@mantine/core';
-import { IoIosSearch } from "react-icons/io";
 
 import Loader from "@/components/Loader";
 import ReloadPage from "@/components/RealodPage";
 import CardMovie from '@/components/CardMovie';
 import { GlobalMovieProps } from '@/@types/movie-type';
+import InputSearch from './Components/InputSearch';
 
 const URL_API = 'http://localhost:3001/products'
 
@@ -56,21 +55,7 @@ export default function Home() {
 
       {(!loading && !error && movies) && 
       <Movies>
-        <Input
-          placeholder="Buscar filme pelo nome"
-          value={searchMovie}
-          onChange={(event) => setSearchMovie(event.currentTarget.value)}
-          rightSectionPointerEvents="all"
-          mt="md"
-          rightSection={
-            <CloseButton
-              icon={<IoIosSearch size={18} />}
-              aria-label="Buscar filme"
-              onClick={handleSearchClick}
-              style={{ display: searchMovie ? undefined : 'none' }}
-            />
-          }
-        />
+        <InputSearch searchMovie={searchMovie} setSearchMovie={setSearchMovie} handleSearchClick={handleSearchClick} />
 
         <ListMovies>
           {movies && movies.map((item) => (
