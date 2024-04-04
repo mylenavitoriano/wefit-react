@@ -57,7 +57,6 @@ export default function Home() {
 
   return (
     <Container>
-      <p>{API}</p>
       {loading && <Loader />}
 
       {(error && movies.length <= 0) && <ReloadPage reload={true}/>}
