@@ -40,30 +40,29 @@ export const GroupButtonsAmount = styled.div`
   align-items: center;
   gap: .75rem;
   margin-top: .5rem;
-`;
 
-export const ButtonQuantity = styled(ButtonMantine)`
-  color: var(--blue);
-  background-color: transparent;
-  border: 2px solid var(--blue);
-  width: 1.125rem;
-  height: 1.125rem;
-  padding: 0;
-  border-radius: 50%;
-
-  &:hover{
-    background-color: var(--blue);
-    transition: all ease .3s;
+  .mantine-Input-wrapper{
+    max-width: 3.75rem;
   }
-`;
-
-export const InputQuantity = styled(InputMantine).attrs({
-  size: 'xs',
-})`
-  max-width: 3.75rem;
 
   .mantine-Input-input{
     text-align: center;
+  }
+
+  .mantine-Button-root{
+    color: var(--blue);
+    background-color: transparent;
+    border: 2px solid var(--blue);
+    width: 1.125rem;
+    height: 1.125rem;
+    padding: 0;
+    border-radius: 50%;
+
+    &:hover{
+      background-color: var(--blue);
+      color: var(--white);
+      transition: all ease .3s;
+    }
   }
 `;
 

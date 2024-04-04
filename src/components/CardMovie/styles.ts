@@ -18,6 +18,46 @@ export const Card = styled.div`
     @media (min-width: 68.75rem) {
         width: 21.125rem;   
     }
+
+    .mantine-Button-root{
+      color: #fff;
+      font-size: 0.75rem;
+      background-color: var(--blue);
+      border-color: var(--blue);
+      width: 100%;
+
+      &.btn-green{
+        background-color: var(--green-button);
+        border-color: var(--green-button);
+
+        &:hover{
+          background-color: var(--green-button);
+        }
+      }
+      
+      .mantine-Button-label{
+        .cart-quantity{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+
+            span{
+                font-weight: 500;
+            }
+        }
+
+        display: flex;
+        justify-content: center;
+        gap: .75rem;
+      }
+
+      &:hover{
+        background-color: var(--blue);
+        filter: brightness(0.95);
+        transition: all ease .3s;
+      }
+    }
 `;
 
 export const ImageMovie = styled(Image)`
@@ -28,32 +68,7 @@ export const ImageMovie = styled(Image)`
 `;
 
 export const Button = styled(ButtonMantine)`
-  color: #fff;
-  font-size: 0.75rem;
-  background-color: var(--blue);
-  border-color: var(--blue);
-  width: 100%;
   
-  .mantine-Button-label{
-    .cart-quantity{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.25rem;
 
-        span{
-            font-weight: 500;
-        }
-    }
-
-    display: flex;
-    justify-content: center;
-    gap: .75rem;
-  }
-
-  &:hover{
-    background-color: var(--blue);
-    filter: brightness(0.95);
-    transition: all ease .3s;
-  }
+  
 `;

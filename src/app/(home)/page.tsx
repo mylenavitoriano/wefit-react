@@ -29,7 +29,6 @@ export default function Home() {
       if(!data){
         throw "Erro";
       }else{
-        console.log(data)
         setMovies(data);
       }
     } catch (error){
@@ -41,11 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchAllData();
-  }, [])
-  
-  useEffect(() => {
-    console.log(movies)
-  }, [movies])
+  }, []);
 
   const handleSearchClick = () => {
     console.log(searchMovie);
@@ -69,7 +64,7 @@ export default function Home() {
           rightSection={
             <CloseButton
               icon={<IoIosSearch size={18} />}
-              aria-label="Clear input"
+              aria-label="Buscar filme"
               onClick={handleSearchClick}
               style={{ display: searchMovie ? undefined : 'none' }}
             />

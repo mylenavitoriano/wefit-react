@@ -1,50 +1,71 @@
 "use client";
-import { ButtonQuantity, DetailsShopping, Group, GroupButtonsAmount, GroupSubtotal, ImageMovie, InputQuantity, ItemCartComponent } from "./styles";
-import { Text, CloseButton, Input } from "@mantine/core";
+import { CartContext, CartMovie } from "@/providers/cart";
+import { DetailsShopping, Group, GroupButtonsAmount, GroupSubtotal, ImageMovie, ItemCartComponent } from "./styles";
+import { Text, CloseButton, Input, Button } from "@mantine/core";
 
 import { FaTrash } from "react-icons/fa";
 import { FaPlus, FaMinus } from "react-icons/fa6";
+import { useContext } from "react";
 
-const ItemCart = () => {
+interface CartItemprops {
+  movie: CartMovie
+}
+
+const ItemCart = ({ movie }: CartItemprops) => {
+  const { decreaseMovieQuantity, incriseMovieQuantity, removeMovieFromCart } = useContext(CartContext);
+
+  const handleDecreaseMovieQuantityClick = () => {
+      decreaseMovieQuantity(movie.id)
+  }
+
+  const handleIncreaseMovieQuantityClick = () => {
+      incriseMovieQuantity(movie.id)
+  }
+
+  const removeMovieQuantityClick = () => {
+      removeMovieFromCart(movie.id)
+  }
+
   return (
-    <ItemCartComponent>
+    <ItemCartComponent >
         <ImageMovie 
-          src={'https://wefit-react-web-test.s3.amazonaws.com/spider-man.png'}
+          src={movie.image}
           height={0}
           width={0}
           sizes="100vw"
-          alt={'Homem Aranha'}
+          alt={movie.title}
         />
 
         <DetailsShopping>
           <Group>
-            <Text fw={700}>Homem Aranha</Text>
+            <Text fw={700}>{movie.title}</Text>
 
             <Group>
-              <Text fw={700}>R$ 29,99</Text>
+              <Text fw={700}>{(movie.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</Text>
               <CloseButton
                 icon={<FaTrash size={16} color={"#009EDD"}/>}
-                aria-label="Clear input"
+                aria-label="Excluir item"
+                onClick={removeMovieQuantityClick}
               />
             </Group>
           </Group>
 
           <Group>
             <GroupButtonsAmount>
-              <ButtonQuantity>
+              <Button onClick={handleDecreaseMovieQuantityClick}>
                 <FaMinus size={12} />
-              </ButtonQuantity>
+              </Button>
 
-              <InputQuantity />
+              <Input size={'xs'} type="number" value={movie.quantity}/>
 
-              <ButtonQuantity>
+              <Button onClick={handleIncreaseMovieQuantityClick}>
                 <FaPlus size={12} />
-              </ButtonQuantity>
+              </Button>
             </GroupButtonsAmount>
 
             <GroupSubtotal>
               <Text fw={700} size="xs" c="dimmed" tt="uppercase">Subtotal</Text>
-              <Text fw={700}>R$ 29,99</Text>
+              <Text fw={700}>{(movie.price * movie.quantity).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</Text>
             </GroupSubtotal>
           </Group>
         </DetailsShopping>

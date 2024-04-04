@@ -1,13 +1,21 @@
 "use client"
+import { useContext } from "react";
 import ItemCart from "./Components/ItemCart";
 import { ButtonFinish, Container, Group, ListItems, TotalPrice } from "./styles";
 import { Text } from "@mantine/core";
+import { CartContext } from "@/providers/cart";
 
 export default function Cart() {
+  const { movies } = useContext(CartContext);
+  console.log(movies);
+
   return (
     <Container>
       <ListItems>
-        <ItemCart />
+        {movies.map((movie) => (
+          <ItemCart movie={movie} key={movie.id}/>
+        ))}
+        
       </ListItems>
 
       <TotalPrice>
