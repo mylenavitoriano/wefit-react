@@ -1,7 +1,7 @@
 "use client"
 import { useContext, useState, useEffect } from "react";
 import ItemCart from "./Components/ItemCart";
-import { Container, Group, ListItems, TotalPrice } from "./styles";
+import { Container, Group, ListItems, TitleTableItems, TotalPrice } from "./styles";
 import { Text, Button } from "@mantine/core";
 import { CartContext } from "@/providers/cart";
 import ReloadPage from "@/components/RealodPage";
@@ -30,6 +30,13 @@ export default function Cart() {
     <>
       {movies.length > 0 && purchaseCompleted == false ? ( 
         <Container>
+          <TitleTableItems>
+            <Text fw={700} size="xs" c="dimmed" tt="uppercase">Produto</Text>
+            <Text fw={700} size="xs" c="dimmed" tt="uppercase">Qtd</Text>
+            <Text fw={700} size="xs" c="dimmed" tt="uppercase">Subtotal</Text>
+            <div></div>
+          </TitleTableItems>
+
           <ListItems>
             {movies.map((movie) => (
               <ItemCart movie={movie} key={movie.id}/>

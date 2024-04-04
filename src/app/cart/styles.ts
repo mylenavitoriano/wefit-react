@@ -1,6 +1,5 @@
 "use client";
 import styled from "styled-components";
-import { Button as ButtonMantine } from "@mantine/core";
 
 export const Container = styled.div`
   background-color: var(--white);
@@ -11,6 +10,17 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+export const TitleTableItems = styled.div`
+  display: none;
+
+  @media (min-width: 68.75rem) {
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr 1.5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const ListItems = styled.div`
