@@ -42,6 +42,8 @@ export default function Home() {
     fetchAllData();
   }, []);
 
+  console.log(error, movies);
+
   const handleSearchClick = () => {
     console.log(searchMovie);
   };
@@ -49,9 +51,8 @@ export default function Home() {
   return (
     <Container>
       {loading && <Loader />}
-      {(error && !movies) && <ReloadPage />}
 
-      
+      {(error && movies.length <= 0) && <ReloadPage reload={true}/>}
 
       {(!loading && !error && movies) && 
       <Movies>

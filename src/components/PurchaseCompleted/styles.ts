@@ -23,7 +23,7 @@ export const Container = styled.div`
         }
     }
 
-    .btn-error {
+    .btn-finished {
         color: #fff;
         font-size: 0.75rem;
         background-color: var(--blue);
@@ -41,16 +41,11 @@ export const Container = styled.div`
 export const BannerImage = styled(Image)`
     height: auto;
     max-height: 16.5rem;
-    max-width: 11.25rem;
+    max-width: 14.875rem;
     width: 100%;
-    border-bottom: 2px solid #3F3D56;
 
     @media (min-width: 68.75rem) {
         
-        max-width: 38rem;
+        max-width: 18.375rem;
     }
-`;
-
-export const Button = styled(ButtonMantine)`
-  
 `;

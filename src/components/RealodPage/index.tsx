@@ -1,8 +1,18 @@
 "use client";
-import { BannerImage, Button, Container } from "./styles";
-import { Text } from "@mantine/core";
+import Link from "next/link";
+import { BannerImage, Container } from "./styles";
+import { Text, Button } from "@mantine/core";
 
-const ReloadPage = () => {
+interface RealodProps {
+  reload: boolean
+}
+
+const ReloadPage = ({reload}: RealodProps) => {
+
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   return (
     <Container>
         <Text size="xl" fw={700}>Parece que não há nada por aqui :(</Text>
@@ -13,7 +23,11 @@ const ReloadPage = () => {
             sizes="100vw"
             alt={"Ícone Meu Carrinho"}/>
         
-        <Button>Recarregar página</Button>
+        {reload == true ? (
+          <Button className="btn-error" onClick={handleReload}>Recarregar página</Button>
+        ) : (
+          <Link href="./"><Button className="btn-error">Voltar</Button></Link>
+        )}
     </Container>
   );
 };

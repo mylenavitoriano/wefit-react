@@ -1,31 +1,58 @@
 "use client"
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import ItemCart from "./Components/ItemCart";
-import { ButtonFinish, Container, Group, ListItems, TotalPrice } from "./styles";
-import { Text } from "@mantine/core";
+import { Container, Group, ListItems, TotalPrice } from "./styles";
+import { Text, Button } from "@mantine/core";
 import { CartContext } from "@/providers/cart";
+import ReloadPage from "@/components/RealodPage";
+import PurchaseCompleted from "@/components/PurchaseCompleted";
 
 export default function Cart() {
-  const { movies } = useContext(CartContext);
-  console.log(movies);
+  const { movies, removeAllMoviesFromCart } = useContext(CartContext);
+
+  const [totalPriceMoviesCart, setTotalPriceMoviesCart] = useState(0);
+  const [purchaseCompleted, setPurchaseCompleted] = useState(false);
+
+  useEffect(() => {
+      let total = 0;
+      movies.forEach(item => {
+          total += (item.quantity * item.price);
+      });
+      setTotalPriceMoviesCart(total);
+  }, [movies]);
+
+  const handleFinishedRequest = () => {
+    removeAllMoviesFromCart();
+    setPurchaseCompleted(true);
+  }
+
+  console.log(purchaseCompleted);
 
   return (
-    <Container>
-      <ListItems>
-        {movies.map((movie) => (
-          <ItemCart movie={movie} key={movie.id}/>
-        ))}
-        
-      </ListItems>
+    <>
+      {movies.length > 0 && purchaseCompleted == false ? ( 
+        <Container>
+          <ListItems>
+            {movies.map((movie) => (
+              <ItemCart movie={movie} key={movie.id}/>
+            ))}
+            
+          </ListItems>
 
-      <TotalPrice>
-        <Group>
-          <Text size="sm" fw={700} c="dimmed" tt="uppercase">Total</Text>
-          <Text size="xl" fw={700}>R$ 29,99</Text>
-        </Group>
+          <TotalPrice>
+            <Group>
+              <Text size="sm" fw={700} c="dimmed" tt="uppercase">Total</Text>
+              <Text size="xl" fw={700}>{totalPriceMoviesCart.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</Text>
+            </Group>
 
-        <ButtonFinish>Finalizar Pedido</ButtonFinish>
-      </TotalPrice>
-    </Container>
+            <Button className="btn-finished-request" onClick={handleFinishedRequest}>Finalizar Pedido</Button>
+          </TotalPrice>
+        </Container>
+        ) : purchaseCompleted == true ? (
+          <PurchaseCompleted />
+        ) : (
+          <ReloadPage />
+        )}
+    </>
   );
 }
