@@ -9,13 +9,7 @@
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
 </p>
-
-<p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
-</p>
-
 <br>
 
 <p align="center">
@@ -43,6 +37,3 @@ Para esse projeto eu consumi uma API de Filmes, com ela eu obtive retorno de dad
 
 Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/RY494yKewR5EpAWUWBhlUp/Re-teste-Front-React-WeFit---2024?type=design&node-id=0%3A1&mode=design&t=NkSGvyMeyZjCXYlF-1).
 
-## :memo: Licença
-
-Esse projeto está sob a licença MIT.
